@@ -14,7 +14,10 @@ animationTimer =0;
 global.debug = true;
 
 is_main_player = variable_instance_get(id, "is_main_player");
-
+if(is_main_player) 
+{
+	global.main_player = id;
+}
 hsp = 0;
 vsp = 0;
 original_move_speed = 4;
@@ -23,6 +26,7 @@ has_wood = false;
 time_source_fucked = false;
 fucked_timeout = 1;
 
+joystick_moved = false;
 tree_near = false;
 cutting_tree = false;
 cutting_tree_duration = 1;
