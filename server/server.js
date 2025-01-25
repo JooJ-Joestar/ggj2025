@@ -3,7 +3,7 @@
 const WebSocketServer = require('ws');
 
 // Creating a new websocket server
-const wss = new WebSocketServer.Server({ port: 3000 })
+const wss = new WebSocketServer.Server({ port: 3001 })
 
 trees = [
 	{network_id: "fgsfds12", x: 512, y: 352},
