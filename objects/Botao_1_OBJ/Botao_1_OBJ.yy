@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"Botao_1_OBJ",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"Botao_1_OBJ",
   "overriddenProperties":[],

@@ -87,4 +87,16 @@ if (is_main_player && has_moved ) {
 
 has_moved = false;
 
+if(global.minigamePesca)
+{
+	//instance_deactivate_object(minigamePesca);
+	layer_set_visible("MinigamePESCA", true);
+	view_set_visible(1, true);
+}
 
+if(global.minigameSushi)
+{
+	//instance_deactivate_object(minigamePesca);
+	layer_set_visible("MinigameSUSHI", true);
+	view_set_visible(2, true);
+}
