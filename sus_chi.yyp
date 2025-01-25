@@ -30,7 +30,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.8.1.171",
+    "IDEVersion":"2024.11.0.179",
   },
   "name":"sus_chi",
   "resources":[
@@ -51,6 +51,9 @@
     {"id":{"name":"spr_officer","path":"sprites/spr_officer/spr_officer.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_tree","path":"sprites/spr_tree/spr_tree.yy",},},
+    {"id":{"name":"tilesheetGenerico","path":"sprites/tilesheetGenerico/tilesheetGenerico.yy",},},
+    {"id":{"name":"waterBG","path":"sprites/waterBG/waterBG.yy",},},
+    {"id":{"name":"TileSet1","path":"tilesets/TileSet1/TileSet1.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

@@ -30,5 +30,7 @@
     {"name":"spr_house","order":7,"path":"sprites/spr_house/spr_house.yy",},
     {"name":"spr_officer","order":2,"path":"sprites/spr_officer/spr_officer.yy",},
     {"name":"spr_tree","order":4,"path":"sprites/spr_tree/spr_tree.yy",},
+    {"name":"tilesheetGenerico","order":9,"path":"sprites/tilesheetGenerico/tilesheetGenerico.yy",},
+    {"name":"waterBG","order":8,"path":"sprites/waterBG/waterBG.yy",},
   ],
 }

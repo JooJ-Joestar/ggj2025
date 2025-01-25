@@ -5,6 +5,8 @@ image_index = 0;
 image_xscale = 2;
 image_yscale = 2;
 
+animationTimer =0;
+
 global.debug = true;
 
 is_main_player = variable_instance_get(id, "is_main_player");
