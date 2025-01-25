@@ -1,5 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+quantidade_one = 99;
+quantidade_two = 99;
+quantidade_three = 99;
+
 image_speed = 0;
 image_index = 0;
 image_xscale = 2;
