@@ -45,11 +45,17 @@ wss.on("connection", ws => {
 		"x": ws.x,
 		"y": ws.y
 	});
-	wss.clients.forEach(function each(client) {
-		if (client !== ws && client.readyState === WebSocket.OPEN) {
-			client.send(data, { binary: false });
-		}
-	});
+
+	try {
+		wss.clients.forEach(function each(client) {
+			if (client !== ws && client.readyState === WebSocket.OPEN) {
+				client.send(data, { binary: false });
+			}
+		});
+	} catch (error) {
+		console.log(error);
+		console.log(client);
+	}
 
 	//when the client sends us a message
 	ws.on("message", data => {
