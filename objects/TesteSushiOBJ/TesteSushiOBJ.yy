@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"Botao_3_OBJ",
+  "%Name":"TesteSushiOBJ",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_main_player","path":"objects/obj_main_player/obj_main_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Botao_3_OBJ",
+  "name":"TesteSushiOBJ",
   "overriddenProperties":[],
   "parent":{
-    "name":"QTE_SUSHI",
-    "path":"folders/Objects/QTE_SUSHI.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"_3",
-    "path":"sprites/_3/_3.yy",
+    "name":"TesteSushi",
+    "path":"sprites/TesteSushi/TesteSushi.yy",
   },
   "spriteMaskId":null,
   "visible":true,

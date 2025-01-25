@@ -4,6 +4,9 @@ quantidade_one = 99;
 quantidade_two = 99;
 quantidade_three = 99;
 
+global.minigameSushi = false;
+global.minigamePesca = false;
+
 image_speed = 0;
 image_index = 0;
 image_xscale = 2;

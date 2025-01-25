@@ -8,3 +8,5 @@ pointerSpeed = 6;
 easySpeed = 3;
 normalSpeed = 6;
 hardSpeed = 10;
+
+chamada_uma_vez = true;

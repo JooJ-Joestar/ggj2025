@@ -1,4 +1,4 @@
-function startQte()
+if (chamada_uma_vez && global.minigamePesca)
 {
 	goalLocation = random_range(minPosition ,maxPosition);
 	QTE_GOAL_OBJ.x = goalLocation;
@@ -20,15 +20,15 @@ function startQte()
 		case 2: pointerSpeed = hardSpeed;
 			QTE_FISH.sprite_index = fish_hard_hud;
 			break;
-	}
-		
+	}	
+	chamada_uma_vez = false;
 }
 
-if (keyboard_check_pressed(vk_backspace)) {
-	startQte();
+if (keyboard_check_pressed(vk_backspace) && global.minigamePesca) {
+	chamada_uma_vez = true;
 }
 
-if (keyboard_check_pressed(vk_space)) {
+if (keyboard_check_pressed(vk_space) && global.minigamePesca) {
 	resolverQTEPesca();
 }
 
@@ -47,7 +47,10 @@ if(pointerLocation <= goalLocation + 32 && pointerLocation >= goalLocation - 32)
 	desativarMinigamePesca();
 }
 
-pointerLocation += pointerSpeed;
+if( global.minigamePesca)
+{
+	pointerLocation += pointerSpeed;
+}
 
 if(pointerLocation >= maxPosition +25 || pointerLocation <= minPosition -30)
 {
@@ -61,4 +64,6 @@ function desativarMinigamePesca()
 	layer_set_visible("MinigamePESCA", false);
 	view_set_visible(0, true);
 	view_set_visible(1, false);
+	chamada_uma_vez= true;
+	global.minigamePesca = false;
 }

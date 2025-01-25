@@ -13,7 +13,7 @@ if (!variable_instance_exists(id, "client")) {
 
 if (!variable_instance_exists(id, "connection")) {
 	var server = "wss://ggj25.point2this.com";
-	var port = 3000;
+	var port = 443;
 	global.txt_server_status = "Connecting to server " + server + ":" + string(port);
 	connection = network_connect_raw_async(client, server, port);
 }

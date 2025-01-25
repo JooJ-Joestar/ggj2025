@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Botao_3_OBJ",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"Topo",
+  "eventList":[],
   "managed":true,
-  "name":"Botao_3_OBJ",
+  "name":"Topo",
   "overriddenProperties":[],
   "parent":{
     "name":"QTE_SUSHI",
@@ -30,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"_3",
-    "path":"sprites/_3/_3.yy",
+    "name":"Correct_sprite",
+    "path":"sprites/Correct_sprite/Correct_sprite.yy",
   },
   "spriteMaskId":null,
   "visible":true,
