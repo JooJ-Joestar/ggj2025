@@ -7,7 +7,7 @@ var has_moved = false;
 //show_debug_message(joystick_moved);
 
 function animationsProgression(){
-animationSpeed = 1;
+	animationSpeed = 1;
 }
 
 animationTimer += animationSpeed;
@@ -128,7 +128,6 @@ if (place_meeting(x, vsp + y, invisibleHitbox)
 
 x += hsp;
 y += vsp;
-
 if(hsp == 0 && vsp ==0)
 {
 	animationResset();
@@ -146,16 +145,26 @@ if(global.minigamePesca)
 {
 	//instance_deactivate_object(minigamePesca);
 	layer_set_visible("MinigamePESCA", true);
+
 	view_set_visible(1, true);
+	camera_set_view_pos(view_camera[1], 0, 0)
 }
 
 if(global.minigameSushi)
 {
 	//instance_deactivate_object(minigamePesca);
 	layer_set_visible("MinigameSUSHI", true);
-	view_set_visible(2, true);
+
+	view_set_visible(0, true);
+	camera_set_view_target(view_camera[0], obj_taxi)
+	camera_set_view_pos(view_camera[0], 675, 0)
+	//pig = true;
 }
 
+if(pig)
+{
+	camera_set_view_pos(view_camera[0], 675, 0);
+}
 
 
 

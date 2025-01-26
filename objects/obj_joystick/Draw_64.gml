@@ -1,5 +1,5 @@
 var _x1 = 100;
-var _y1 = 750;
+var _y1 = 700;
 var _escala = 1;
 var _sprite_size = sprite_get_width(spr_joystick);
 

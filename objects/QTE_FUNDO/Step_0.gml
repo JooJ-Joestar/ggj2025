@@ -61,9 +61,12 @@ QTE_POINTER_OBJ.x = pointerLocation;
 function desativarMinigamePesca()
 {
 	//instance_deactivate_object(minigamePesca);
+	
 	layer_set_visible("MinigamePESCA", false);
 	view_set_visible(0, true);
 	view_set_visible(1, false);
+	
+	
 	chamada_uma_vez= true;
 	global.minigamePesca = false;
 }

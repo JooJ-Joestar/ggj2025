@@ -196,7 +196,15 @@ function sairMinigameSushi()
 	
 	layer_set_visible("MinigameSUSHI", false);
 	view_set_visible(0, true);
-	view_set_visible(2, false);
+	view_set_visible(1, false);
+	
+		camera_set_view_target(view_camera[0], obj_main_player)
+chamada_uma_vez = true;
+	
+	
+//	view_set
+//	(camera,obj_main_player)
+	
 	endGame = false;
 	
 	chamada_uma_vez = true;
