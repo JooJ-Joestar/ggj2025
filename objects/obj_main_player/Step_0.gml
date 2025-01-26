@@ -141,7 +141,7 @@ if (is_main_player && has_moved ) {
 
 has_moved = false;
 
-if(global.minigamePesca)
+if(global.minigamePesca && global.main_player)
 {
 	//instance_deactivate_object(minigamePesca);
 	layer_set_visible("MinigamePESCA", true);
@@ -150,7 +150,7 @@ if(global.minigamePesca)
 	camera_set_view_pos(view_camera[1], 0, 0)
 }
 
-if(global.minigameSushi)
+if(global.minigameSushi && global.main_player)
 {
 	//instance_deactivate_object(minigamePesca);
 	layer_set_visible("MinigameSUSHI", true);

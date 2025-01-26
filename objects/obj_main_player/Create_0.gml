@@ -1,9 +1,13 @@
+// Evento Create do objeto
+
+
 pig = false;
 
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 quantidade_one = 2;
 quantidade_two = 2;
+
 quantidade_three = 2;
 match_timer = 0;
 score = 0;

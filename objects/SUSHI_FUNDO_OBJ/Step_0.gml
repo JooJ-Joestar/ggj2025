@@ -133,9 +133,11 @@ if(selected_one != 9)
 
 if(selected_two != 9)
 {	
+
 	with(Right_2){visible = true};
 	if(selected_two == sushi_two)
 	{
+			global.main_player.add_to_score(10);
 		with(Right_2){sprite_index = Correct_sprite;}
 			with (Level_2) {
 			visible = true
@@ -154,6 +156,8 @@ if(selected_three != 9)
 	with(Right_3){visible = true};
 	if(selected_three == sushi_three)
 	{
+		
+	global.main_player.add_to_score(10);
 		with(Right_3){sprite_index = Correct_sprite;}
 		with (Level_3) {
 			visible = true
@@ -173,6 +177,7 @@ function minigameCompletado()
 {
 	//CODIGO DE GANHAR PONTOS
 	if(!endGame) audio_play_sound(CORRECT, 1, false);
+	global.main_player.add_to_score(100);
 	sairMinigameSushi();
 }
 

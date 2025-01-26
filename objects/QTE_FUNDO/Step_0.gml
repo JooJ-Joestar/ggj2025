@@ -39,9 +39,10 @@ function resolverQTEPesca()
 if(pointerLocation <= goalLocation + 32 && pointerLocation >= goalLocation - 32)
 	{
 		audio_play_sound(CORRECT, 1, false);
+		global.main_player.add_to_score(50);
 		switch(dificulty)
 	{
-		case 0: obj_main_player.quantidade_one +=1;break;
+		case 0: obj_main_player.quantidade_one +=1; break;
 		case 1: obj_main_player.quantidade_two +=1;break;
 		case 2: obj_main_player.quantidade_three +=1;break;
 	}	
@@ -78,6 +79,7 @@ function desativarMinigamePesca()
 	view_set_visible(0, true);
 	view_set_visible(1, false);
 	
+	camera_set_view_target(view_camera[0], global.main_player)
 	
 	chamada_uma_vez= true;
 	global.minigamePesca = false;

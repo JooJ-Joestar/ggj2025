@@ -88,6 +88,7 @@
     {"id":{"name":"map","path":"rooms/map/map.yy",},},
     {"id":{"name":"networking","path":"scripts/networking/networking.yy",},},
     {"id":{"name":"CORRECT","path":"sounds/CORRECT/CORRECT.yy",},},
+    {"id":{"name":"musiquinha","path":"sounds/musiquinha/musiquinha.yy",},},
     {"id":{"name":"snd_bonk","path":"sounds/snd_bonk/snd_bonk.yy",},},
     {"id":{"name":"WRONG","path":"sounds/WRONG/WRONG.yy",},},
     {"id":{"name":"_1","path":"sprites/_1/_1.yy",},},
