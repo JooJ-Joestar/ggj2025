@@ -11,11 +11,11 @@ const MATCH_TIME = 90;
 var timer = SCORE_TIME;
 var match_status = "pause";
 
-var fishes = [];
+var fishing_spots = [];
 
 var scoreboard = [];
 
-const fish_coords = [
+const fish_spot_coords = [
 	{x: 256, y: 896},
 	{x: 928, y: 448},
 	{x: 1632, y: 288},
@@ -145,6 +145,7 @@ wss.on("connection", ws => {
 		match_status = "run";
 		timer = SCORE_TIME;
 		run_timer();
+		spawn_fish(5);
 	}
 
 	//code that should execute just after the player connects
@@ -324,7 +325,8 @@ function run_timer () {
 
 			if (match_status == "score") {
 				data.final_score = final_score;
-				// console.log(data);
+			} else if (match_status == "run") {
+				spawn_fish(Math.round(Math.random()));
 			}
 
 			data = JSON.stringify(data);
@@ -334,7 +336,6 @@ function run_timer () {
 			});
 		} catch (error) {
 			console.log(error);
-			console.log(client);
 		}
 
 		setTimeout(function () {
@@ -350,12 +351,37 @@ function run_timer () {
 	} else if (match_status == "score") {
 		match_status = "run";
 		timer = MATCH_TIME;
+		fishing_spots = [];
 
 		scoreboard = [];
 	}
 	run_timer();
 }
 
-function spawn_fish () {
+function spawn_fish (number_to_spawn) {
+	if (number_to_spawn == 0) return;
+	for (i = 1; i <= number_to_spawn; i++) {
+		var coords = fish_spot_coords[Math.round(Math.random() * fish_spot_coords.length)];
+		coords.x += Math.round(Math.random() * 60);
+		coords.y += Math.round(Math.random() * 60);
+		coords.id = Math.round(Math.random() * 999999);
+		console.log("Fishing coords generated");
+		console.log(coords);
+		fishing_spots.unshift(coords);
 
+		if (fishing_spots.length >= 12) {
+			fishing_spots.pop();
+		}
+	}
+	
+	var data = {
+		"type": "fishing_spots",
+		"fishing_spots": fishing_spots,
+	};
+	data = JSON.stringify(data);
+	wss.clients.forEach(function each(client) {
+		if (client.readyState === WebSocketServer.OPEN) {
+			client.send(data, { binary: false });
+		}
+	});
 }
