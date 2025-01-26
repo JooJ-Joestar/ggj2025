@@ -1,5 +1,6 @@
 if (chamada_uma_vez && global.minigamePesca)
 {
+	pointerLocation = 150;
 	goalLocation = random_range(minPosition ,maxPosition);
 	QTE_GOAL_OBJ.x = goalLocation;
 	
@@ -8,7 +9,8 @@ if (chamada_uma_vez && global.minigamePesca)
 		pointerSpeed = normalSpeed;
 	}
 	
-	var dificulty = irandom(3);
+	dificulty = irandom(2);
+	
 	switch(dificulty)
 	{
 		case 0: pointerSpeed = easySpeed;
@@ -37,6 +39,14 @@ function resolverQTEPesca()
 if(pointerLocation <= goalLocation + 32 && pointerLocation >= goalLocation - 32)
 	{
 		audio_play_sound(CORRECT, 1, false);
+		switch(dificulty)
+	{
+		case 0: obj_main_player.quantidade_one +=1;break;
+		case 1: obj_main_player.quantidade_two +=1;break;
+		case 2: obj_main_player.quantidade_three +=1;break;
+	}	
+		
+		
 	}
 	else
 	{
@@ -51,6 +61,8 @@ if( global.minigamePesca)
 {
 	pointerLocation += pointerSpeed;
 }
+
+
 
 if(pointerLocation >= maxPosition +25 || pointerLocation <= minPosition -30)
 {

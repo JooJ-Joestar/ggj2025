@@ -2,9 +2,9 @@ pig = false;
 
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-quantidade_one = 99;
-quantidade_two = 99;
-quantidade_three = 99;
+quantidade_one = 2;
+quantidade_two = 2;
+quantidade_three = 2;
 
 animationSpeed = 0;
 

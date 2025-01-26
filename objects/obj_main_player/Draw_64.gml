@@ -27,7 +27,7 @@ draw_set_valign(fa_top);
 draw_text_transformed(0, 20, "Tempo: " + string(match_timer), 1.5, 1.5, 0);
 draw_text_transformed(0, 50, "Pontuacao: " + string(score), 1.5, 1.5, 0);
 draw_text_transformed(0, 80, "Peixe 1 x" + string(quantidade_one), 1.5, 1.5, 0);
-draw_text_transformed(0, 110, "Peixe 2 x" + string(quantidade_one), 1.5, 1.5, 0);
+draw_text_transformed(0, 110, "Peixe 2 x" + string(quantidade_two), 1.5, 1.5, 0);
 draw_text_transformed(0, 140, "Peixe 3 x" + string(quantidade_three), 1.5, 1.5, 0);
 
 draw_set_halign(fa_left);
