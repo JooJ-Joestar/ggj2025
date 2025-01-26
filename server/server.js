@@ -15,16 +15,122 @@ var fishes = [];
 
 var scoreboard = [];
 
+const sillyFirstNames = [
+	"Carlinhos",
+	"Dalva",
+	"Cleide",
+	"Steve Agiota",
+	"Bloop",
+	"Ziggy",
+	"Wobble",
+	"Snork",
+	"Flapjack",
+	"Muffin",
+	"Gizmo",
+	"Fizz",
+	"Booger",
+	"Doodle",
+	"Noodle",
+	"Squiggle",
+	"Tootsie",
+	"Waffle",
+	"Gloop",
+	"Fizzy",
+	"Bing",
+	"Pookie",
+	"Snuggle",
+	"Tater",
+	"Snazzy",
+	"Wiggly",
+	"Pickle",
+	"Scooter",
+	"Quirky",
+	"Fluffy",
+	"Mumbo",
+	"Jumbo",
+	"Wobblebottom",
+	"Froggy",
+	"Bubble",
+	"Splat",
+	"Chuckle",
+	"Giggles",
+	"Snickers",
+	"Peanut",
+	"Sprinkle",
+	"Banjo",
+	"Skippy",
+	"Dippy",
+	"Wiggles",
+	"Bouncy",
+	"Goofy",
+	"Zonky",
+	"Twinkle",
+	"Plop",
+	"Jiggly",
+	"Kooky",
+	"Squashy",
+	"Dorky",
+	"Floop",
+	"Twiddly",
+	"Gobbly",
+	"Snappy",
+	"Lolly",
+	"Bibbly",
+	"Zappy",
+	"Hiccup",
+	"Sneezy",
+	"Yapper",
+	"Flippy",
+	"Crumpet",
+	"Blubber",
+	"Scrappy",
+	"Grumbles",
+	"Quackers",
+	"Squirt",
+	"Puddles",
+	"Cuddles",
+	"Biffy",
+	"Zoodle",
+	"Fuzzle",
+	"Womble",
+	"Skedaddle",
+	"Wheezle",
+	"Zonk",
+	"Tumbles",
+	"Wompy",
+	"Yippee",
+	"Bimble",
+	"Sprocket",
+	"Snickersnap",
+	"Quibble",
+	"Zazzy",
+	"Frizzle",
+	"Hokey",
+	"Bonkers",
+	"Lumpy",
+	"Toodles",
+	"Gribble",
+	"Chortle",
+	"Dweezle",
+	"Fizzpop",
+	"Puffin",
+	"Moxie",
+	"Bibbity",
+	"Boopsie",
+	"Snorkel",
+	"Fuzzlewhack"
+];
+
 wss.on("connection", ws => {
 	if (match_status == "pause") {
 		match_status = "score";
 		timer = SCORE_TIME;
-	}
 	run_timer();
+	}
 
 	//code that should execute just after the player connects
 	console.log("Player joined. " + wss.clients.size + " players connected.");
-	ws.id = Math.round(Math.random() * 15000);
+	ws.id = sillyFirstNames[Math.round(Math.random() * sillyFirstNames.length)];
 	console.log(ws.id);
 	ws.x = 2178.0 + Math.random() * 60;
 	ws.y = 962.0 + Math.random() * 60;
@@ -67,7 +173,7 @@ wss.on("connection", ws => {
 		try {
 			data = data.toString();
 			data = data.replace(/\0/g, '');
-			data = [data.slice(0, 1), "\"id\":" + ws.id + ",", data.slice(1)].join('');
+			data = [data.slice(0, 1), "\"id\":\"" + ws.id + "\",", data.slice(1)].join('');
 			data_json = JSON.parse((data));
 			// console.log(data_json);
 			if (data_json.type == "keep_alive") {
