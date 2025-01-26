@@ -18,7 +18,7 @@ if (async_load[? "size"] > 0) {
 	var response = buffer_read(buff, buffer_string);
 	//show_debug_message(response);
 	var response_struct = json_parse(response);
-	show_debug_message(response_struct);
+	//show_debug_message(response_struct);
 	
 	if (struct_exists(response_struct, "type") == true) {
 		switch (response_struct.type) {
@@ -68,18 +68,10 @@ if (async_load[? "size"] > 0) {
 				move(response_struct.id, response_struct.x, response_struct.y);
 			break;
 			
-			//case "cutting_tree":
-			//	var tree = false;
-			//	for (var i = 0; i < instance_number(obj_tree); ++i;) {
-			//		tree = instance_find(obj_tree, i);
-			//		if (tree.network_id == response_struct.tree_network_id) break;
-			//		tree = false;
-			//	}
-			//	if (!tree) break;
-			//	player = player_list[response_struct.id];
-			//	player.tree_near = tree.id;
-			//	player.cut_tree();
-			//break;
+			case "place_bomb":
+				player = player_list[response_struct.id];
+				player.place_bomb();
+			break;
 			
 		//	case "cut_tree":
 		//		for (var i = 0; i < instance_number(obj_tree); ++i;) {
