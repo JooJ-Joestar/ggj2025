@@ -3,14 +3,20 @@
 quantidade_one = 99;
 quantidade_two = 99;
 quantidade_three = 99;
+animationSpeed = 0;
+
+shooting = false;
 
 global.minigameSushi = false;
 global.minigamePesca = false;
 
 image_speed = 0;
 image_index = 0;
-image_xscale = 0.5;
-image_yscale = 0.5;
+
+scale = 0.35;
+
+image_xscale = scale;
+image_yscale = scale;
 
 animationTimer =0;
 
@@ -87,23 +93,24 @@ function create_house () {
 
 function place_bomb () {
 	var restore_bomb = function restore_bomb () {
-		var erase_explosion = function erase_explosion (explosion) {
-			instance_destroy(explosion);
+		var erase_explosion = function erase_explosion () {
+		//	instance_destroy(explosion);
 		}
 
 		time_source_bomb = false;
-		var explosion = instance_create_layer(
-			active_bomb.x + active_bomb.sprite_width / 2 - sprite_get_width(spr_explosion) / 2,
-			active_bomb.y + active_bomb.sprite_height / 2 - sprite_get_height(spr_explosion) / 2,
-			"Instances",
-			obj_explosion
-		);
+		//var explosion = instance_create_layer(
+	//		active_bomb.x + active_bomb.sprite_width / 2 - sprite_get_width(spr_explosion) / 2,
+	//		active_bomb.y + active_bomb.sprite_height / 2 - sprite_get_height(spr_explosion) / 2,
+	//		"Instances",
+	//		obj_explosion
+	//	);
+
 		if (!is_main_player) exit;
 		
 		instance_destroy(active_bomb);
 	
-		var time_source_explosion = time_source_create(time_source_game, 1, time_source_units_seconds, erase_explosion, [explosion]);
-		time_source_start(time_source_explosion);
+		//var time_source_explosion = time_source_create(time_source_game, 1, time_source_units_seconds, erase_explosion, [explosion]);
+		//time_source_start(time_source_explosion);
 		
 		send_network_data(json_stringify({
 			type: "detonate_bomb",
@@ -121,7 +128,7 @@ function place_bomb () {
 	active_bomb = instance_create_layer(
 		x + sprite_width / 2 - sprite_get_width(spr_bomb) / 2,
 		y + sprite_height / 2 - sprite_get_height(spr_bomb) / 2,
-		"Instances",
+		"effects",
 		obj_buble,
 		{network_id: md5_string_unicode(get_timer() + irandom_range(1, 999999))}
 	);

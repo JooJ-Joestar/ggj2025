@@ -20,6 +20,6 @@
 
 if (!is_main_player || !global.debug || !struct_exists(global, "txt_server_status")) exit;
 draw_set_halign(fa_center);
-draw_text(x + id.sprite_width / 2, y + id.sprite_height + 5, "Steve Agiota");
+draw_text(x, y, "Steve Agiota");
 draw_set_halign(fa_left);
 draw_text(0, 0, global.txt_server_status);

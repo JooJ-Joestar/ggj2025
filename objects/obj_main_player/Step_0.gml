@@ -7,25 +7,47 @@ var has_moved = false;
 show_debug_message(joystick_moved);
 
 function animationsProgression(){
-animationTimer +=1;
+animationSpeed = 1;
 }
+
+animationTimer += animationSpeed;
+
 function animationResset(){
-   image_index = 0;
+	if(!shooting)
+	{
+		image_index = 0;
+	}
+	animationSpeed = 0;
 }
 
 //image_speed  = 0;
-
-	if (animationTimer >= 5) {
+	if (animationTimer >= 5 && !shooting) {
 		if (image_index == 0) {
 		        image_index = 1;
 		    } else if (image_index == 1) {
 		        image_index = 2;
 		    } else if (image_index == 2) {
 		        image_index = 3;
-		    } else {
+		    } else {                                                      
 		        image_index = 0;
-	    }
+	    }                                                                                              
 		animationTimer = 0;
+}
+
+if(keyboard_check_pressed(vk_space)){
+	  shooting = true;
+	  image_index = 4;
+	  animationTimer = 0;
+}
+
+if(image_index == 4)
+{
+	animationTimer +=1;
+	if(animationTimer >=10)
+	{
+	 image_index = 0  ;
+	 shooting = false;
+	}
 }
 
 function set_animation (state) {
@@ -48,7 +70,7 @@ if (keyboard_check(vk_right) || joystick_moved) {
 	{
 		hsp = move_speed;
 	}
-	image_xscale = 0.5;
+	image_xscale = scale;
 	animationsProgression();
 	
 	has_moved = true;
@@ -58,7 +80,7 @@ if (keyboard_check(vk_right) || joystick_moved) {
 		hsp = -move_speed;
 	}
 	
-	image_xscale = -0.5;
+	image_xscale = -scale;
 	has_moved = true;
 	
 	animationsProgression();
