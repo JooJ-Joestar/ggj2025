@@ -130,7 +130,8 @@ wss.on("connection", ws => {
 
 	//code that should execute just after the player connects
 	console.log("Player joined. " + wss.clients.size + " players connected.");
-	ws.id = sillyFirstNames[Math.round(Math.random() * sillyFirstNames.length)];
+	// ws.id = silly_first_names[Math.round(Math.random() * silly_first_names.length)];
+	ws.id = Math.round(Math.random() * 15000);
 	console.log(ws.id);
 	ws.x = 2178.0 + Math.random() * 60;
 	ws.y = 962.0 + Math.random() * 60;
