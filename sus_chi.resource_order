@@ -74,6 +74,7 @@
     {"name":"spr_explosion","order":6,"path":"sprites/spr_explosion/spr_explosion.yy",},
     {"name":"spr_grass","order":1,"path":"sprites/spr_grass/spr_grass.yy",},
     {"name":"spr_house","order":7,"path":"sprites/spr_house/spr_house.yy",},
+    {"name":"SPR_Logo_Splashimi","order":18,"path":"sprites/SPR_Logo_Splashimi/SPR_Logo_Splashimi.yy",},
     {"name":"spr_officer","order":2,"path":"sprites/spr_officer/spr_officer.yy",},
     {"name":"spr_tree","order":4,"path":"sprites/spr_tree/spr_tree.yy",},
     {"name":"Sprite15","order":7,"path":"sprites/Sprite15/Sprite15.yy",},

@@ -117,6 +117,7 @@
     {"id":{"name":"spr_grass","path":"sprites/spr_grass/spr_grass.yy",},},
     {"id":{"name":"spr_house","path":"sprites/spr_house/spr_house.yy",},},
     {"id":{"name":"spr_joystick","path":"sprites/spr_joystick/spr_joystick.yy",},},
+    {"id":{"name":"SPR_Logo_Splashimi","path":"sprites/SPR_Logo_Splashimi/SPR_Logo_Splashimi.yy",},},
     {"id":{"name":"spr_officer","path":"sprites/spr_officer/spr_officer.yy",},},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
     {"id":{"name":"spr_tree","path":"sprites/spr_tree/spr_tree.yy",},},
