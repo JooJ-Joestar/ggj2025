@@ -1,7 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-if (other.id == active_bomb.id) exit;
+if (other && active_bomb && other.id == active_bomb.id) exit;
 
 if (move_speed > 0) {
 	audio_play_sound(snd_bonk, 10, false);
