@@ -12,13 +12,13 @@ if (chamada_uma_vez && global.minigamePesca)
 	switch(dificulty)
 	{
 		case 0: pointerSpeed = easySpeed;
-			QTE_FISH.sprite_index = fish_easy_hud;
+			QTE_FISH.sprite_index = Peixe_1___Peijofu;
 		break;
 		case 1: pointerSpeed = normalSpeed;
-			QTE_FISH.sprite_index = fish_normal_hud;
+			QTE_FISH.sprite_index = Peixe_2___Cenogiri;
 			break;
 		case 2: pointerSpeed = hardSpeed;
-			QTE_FISH.sprite_index = fish_hard_hud;
+			QTE_FISH.sprite_index = Peixe_3___Lulamaki;
 			break;
 	}	
 	chamada_uma_vez = false;

@@ -4,6 +4,14 @@ if (chamada_uma_vez && global.minigameSushi) {
 	with(Right_1){visible = false};
 	with(Right_2){visible = false};	
 	with(Right_3){visible = false};
+	
+	 with (Vazio_1) {image_xscale = 0.5; image_yscale = 0.5;};
+	 with (Vazio_2) {image_xscale = 0.5; image_yscale = 0.5;};
+	 with (Vazio_3) {image_xscale = 0.5; image_yscale = 0.5;};
+	 
+	 with (Level_1) {image_xscale = 0.45; image_yscale = 0.45; visible = false};
+	 with (Level_2) {image_xscale = 0.45; image_yscale = 0.45; visible = false};
+	 with (Level_3) {image_xscale = 0.45; image_yscale = 0.45; visible = false};
 		
 	sushi_one = irandom(2);
 	sushi_two = irandom(2);
@@ -18,56 +26,70 @@ if(global.minigameSushi)
 	timerButton +=1;
 }
 
-if(timerButton >= 250)
+if(timerButton >= 200)
 {
+	if(!endGame)
+	{
+	endGame = true;
 	audio_play_sound(WRONG, 1, false);
+	}
 	sairMinigameSushi();
 }
 
 function setarSprites()
 {
+
 	switch(sushi_one)
 	{
 		case 0: 
-		  with (Vazio_1) {sprite_index =  _1;};
+		  with (Vazio_1) {sprite_index =  Sushi_1___Peijofu;};
+		  with (Level_1) {sprite_index =  Sushi_1___Peijofu;};
 		break;
 		
 		case 1:   
-		with (Vazio_1) { sprite_index =  _2;};
+		with (Vazio_1) { sprite_index =  Sushi_2___Cenogiri_;};
+		  with (Level_1) {sprite_index =  Sushi_2___Cenogiri_;};
 		break;
 		
 		case 2: 
-		  with (Vazio_1) {sprite_index =  _3;};
+		  with (Vazio_1) {sprite_index =  Sushi_3___Lulamaki_;};
+		  with (Level_1) {sprite_index =  Sushi_3___Lulamaki_;};
 		break;
 	}
 	
 	switch(sushi_two)
 	{
 			case 0: 
-		  with (Vazio_2) { sprite_index =  _1;};
+		  with (Vazio_2) { sprite_index =  Sushi_1___Peijofu;};
+		  with (Level_2) {sprite_index =  Sushi_1___Peijofu;};
 		break;
 		
 		case 1:  
-		with (Vazio_2) {sprite_index =  _2;};
+		with (Vazio_2) {sprite_index =  Sushi_2___Cenogiri_;};
+		  with (Level_2) {sprite_index =  Sushi_2___Cenogiri_;};
 		break;
 		
 		case 2: 
-		  with (Vazio_2) {sprite_index =  _3;};
+		  with (Vazio_2) {sprite_index =  Sushi_3___Lulamaki_;};
+		  with (Level_2) {sprite_index =  Sushi_3___Lulamaki_;};
 		break;
 	}
 	
 	switch(sushi_three)
 	{
 			case 0: 
-		  with (Vazio_3) {sprite_index =  _1;};
+		  with (Vazio_3) {sprite_index =  Sushi_1___Peijofu;};
+		  with (Level_3) {sprite_index =  Sushi_1___Peijofu;};
 		break;
 		
 		case 1:  
-		with (Vazio_3) {sprite_index =  _2; };
+		with (Vazio_3) {sprite_index =  Sushi_2___Cenogiri_; };
+		  with (Level_3) {sprite_index =  Sushi_2___Cenogiri_;};
 		break;
 		
 		case 2: 
-		  with (Vazio_3) {sprite_index =  _3;};
+		  with (Vazio_3) {sprite_index =  Sushi_3___Lulamaki_;};
+		  with (Level_3) {sprite_index =  Sushi_3___Lulamaki_;};
 		break;
 	}
 }
@@ -96,6 +118,10 @@ if(selected_one != 9)
 	if(selected_one == sushi_one)
 	{
 		with(Right_1){sprite_index = Correct_sprite;}
+		
+		with (Level_1) {
+			visible = true
+		}
 	}
 	else
 	{
@@ -111,6 +137,9 @@ if(selected_two != 9)
 	if(selected_two == sushi_two)
 	{
 		with(Right_2){sprite_index = Correct_sprite;}
+			with (Level_2) {
+			visible = true
+		}
 	}
 	else
 	{
@@ -126,6 +155,10 @@ if(selected_three != 9)
 	if(selected_three == sushi_three)
 	{
 		with(Right_3){sprite_index = Correct_sprite;}
+		with (Level_3) {
+			visible = true
+		}
+
 		minigameCompletado();
 	}
 	else
@@ -151,7 +184,7 @@ function sairMinigameSushi()
 	if(endTimer > 50)
 	{
 	timerButton = 0;
-	
+	endTimer = 0;
 	selected = 9;
 	selected_one = 9;
 	selected_two = 9;

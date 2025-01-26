@@ -23,7 +23,7 @@
   ],
   "name":"Sushi_1___Peijofu",
   "nineSlice":null,
-  "origin":0,
+  "origin":9,
   "parent":{
     "name":"Sushi",
     "path":"folders/Sprites/Sushi.yy",
@@ -75,7 +75,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":0,
+    "xorigin":38,
     "yorigin":0,
   },
   "swatchColours":null,

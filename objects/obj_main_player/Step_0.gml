@@ -142,3 +142,32 @@ if(global.minigameSushi)
 	layer_set_visible("MinigameSUSHI", true);
 	view_set_visible(2, true);
 }
+
+
+
+
+if(keyboard_check(vk_up))
+{	
+	if(keyboard_check(vk_left)){playerDirecao = 1;}
+	else if(keyboard_check(vk_right)){playerDirecao = 7;}
+	else{playerDirecao = 0;}
+}
+if(keyboard_check(vk_down))
+{	
+	if(keyboard_check(vk_left)){playerDirecao = 3;}
+	else if(keyboard_check(vk_right)){playerDirecao = 5;}
+	else{playerDirecao = 4;}
+}
+if(keyboard_check(vk_left))
+{	
+	if(keyboard_check(vk_up)){playerDirecao = 1;}
+	else if(keyboard_check(vk_down)){playerDirecao = 3;}
+	else{playerDirecao = 2;}
+}
+if(keyboard_check(vk_right))
+{	
+	if(keyboard_check(vk_up)){playerDirecao = 7;}
+	else if(keyboard_check(vk_down)){playerDirecao = 5;}
+	else{playerDirecao = 6;}
+}
+

@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"_1",
-    "path":"sprites/_1/_1.yy",
+    "name":"Sushi_1___Peijofu",
+    "path":"sprites/Sushi_1___Peijofu/Sushi_1___Peijofu.yy",
   },
   "spriteMaskId":null,
   "visible":true,

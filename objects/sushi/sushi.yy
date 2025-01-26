@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"SUSHI_FISH",
+  "%Name":"sushi",
   "eventList":[],
   "managed":true,
-  "name":"SUSHI_FISH",
+  "name":"sushi",
   "overriddenProperties":[],
   "parent":{
     "name":"QTE_SUSHI",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Tela_ingredientes_asset",
-    "path":"sprites/Tela_ingredientes_asset/Tela_ingredientes_asset.yy",
+    "name":"Sushi_1___Peijofu",
+    "path":"sprites/Sushi_1___Peijofu/Sushi_1___Peijofu.yy",
   },
   "spriteMaskId":null,
   "visible":true,

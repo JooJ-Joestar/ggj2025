@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"_1",
-    "path":"sprites/_1/_1.yy",
+    "name":"Peixe_1___Peijofu",
+    "path":"sprites/Peixe_1___Peijofu/Peixe_1___Peijofu.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"_3",
-    "path":"sprites/_3/_3.yy",
+    "name":"Peixe_3___Lulamaki",
+    "path":"sprites/Peixe_3___Lulamaki/Peixe_3___Lulamaki.yy",
   },
   "spriteMaskId":null,
   "visible":true,

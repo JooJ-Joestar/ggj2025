@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"SUSHI_FISH",
+  "%Name":"SUSHI_TABLE",
   "eventList":[],
   "managed":true,
-  "name":"SUSHI_FISH",
+  "name":"SUSHI_TABLE",
   "overriddenProperties":[],
   "parent":{
     "name":"QTE_SUSHI",
@@ -28,9 +28,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Tela_ingredientes_asset",
-    "path":"sprites/Tela_ingredientes_asset/Tela_ingredientes_asset.yy",
+    "name":"Mesa_asset",
+    "path":"sprites/Mesa_asset/Mesa_asset.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"Mesa_asset",
+    "path":"sprites/Mesa_asset/Mesa_asset.yy",
+  },
   "visible":true,
 }

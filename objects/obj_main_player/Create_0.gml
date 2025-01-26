@@ -1,3 +1,5 @@
+
+
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 quantidade_one = 99;
@@ -9,6 +11,7 @@ shooting = false;
 
 global.minigameSushi = false;
 global.minigamePesca = false;
+playerDirecao = 6;
 
 image_speed = 0;
 image_index = 0;
@@ -106,7 +109,6 @@ function place_bomb () {
 	//	);
 
 		if (!is_main_player) exit;
-		
 		instance_destroy(active_bomb);
 	
 		//var time_source_explosion = time_source_create(time_source_game, 1, time_source_units_seconds, erase_explosion, [explosion]);
@@ -132,6 +134,7 @@ function place_bomb () {
 		obj_buble,
 		{network_id: md5_string_unicode(get_timer() + irandom_range(1, 999999))}
 	);
+	active_bomb.direcao = playerDirecao;
 	
 	send_network_data(json_stringify({
 		type: "place_bomb",

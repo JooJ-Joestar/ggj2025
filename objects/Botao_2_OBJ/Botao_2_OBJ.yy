@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"_2",
-    "path":"sprites/_2/_2.yy",
+    "name":"Peixe_2___Cenogiri",
+    "path":"sprites/Peixe_2___Cenogiri/Peixe_2___Cenogiri.yy",
   },
   "spriteMaskId":null,
   "visible":true,
