@@ -239,7 +239,7 @@ wss.on("connection", ws => {
 			} else if (data_json.type == "score") {
 				scoreboard[ws.id] = data_json.score;
 				scoreboard.sort(function(a, b){return a - b});
-				// console.log(scoreboard);
+				console.log(scoreboard);
 				return;
 			} else {
 
@@ -359,29 +359,33 @@ function run_timer () {
 }
 
 function spawn_fish (number_to_spawn) {
-	if (number_to_spawn == 0) return;
-	for (i = 1; i <= number_to_spawn; i++) {
-		var coords = fish_spot_coords[Math.round(Math.random() * fish_spot_coords.length)];
-		coords.x += Math.round(Math.random() * 60);
-		coords.y += Math.round(Math.random() * 60);
-		coords.id = Math.round(Math.random() * 999999);
-		console.log("Fishing coords generated");
-		console.log(coords);
-		fishing_spots.unshift(coords);
+	try {
+		if (number_to_spawn == 0) return;
+		for (i = 1; i <= number_to_spawn; i++) {
+			var coords = fish_spot_coords[Math.round(Math.random() * fish_spot_coords.length)];
+			coords.x += Math.round(Math.random() * 60);
+			coords.y += Math.round(Math.random() * 60);
+			coords.id = Math.round(Math.random() * 999999);
+			console.log("Fishing coords generated");
+			console.log(coords);
+			fishing_spots.unshift(coords);
 
-		if (fishing_spots.length >= 16) {
-			fishing_spots.pop();
+			if (fishing_spots.length >= 16) {
+				fishing_spots.pop();
+			}
 		}
+		
+		var data = {
+			"type": "fishing_spots",
+			"fishing_spots": fishing_spots,
+		};
+		data = JSON.stringify(data);
+		wss.clients.forEach(function each(client) {
+			if (client.readyState === WebSocketServer.OPEN) {
+				client.send(data, { binary: false });
+			}
+		});
+	} catch (error) {
+		console.log(error);
 	}
-	
-	var data = {
-		"type": "fishing_spots",
-		"fishing_spots": fishing_spots,
-	};
-	data = JSON.stringify(data);
-	wss.clients.forEach(function each(client) {
-		if (client.readyState === WebSocketServer.OPEN) {
-			client.send(data, { binary: false });
-		}
-	});
 }
