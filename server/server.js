@@ -21,6 +21,7 @@ wss.on("connection", ws => {
 	//code that should execute just after the player connects
 	console.log("Player joined. " + wss.clients.size + " players connected.");
 	ws.id = Math.round(Math.random() * 15000);
+	ws.score = 0;
 	console.log(ws.id);
 	ws.x = 2178.0 + Math.random() * 60;
 	ws.y = 962.0 + Math.random() * 60;
@@ -106,6 +107,8 @@ wss.on("connection", ws => {
 			// 		network_id: data_json.network_id
 			// 	});
 			// 	console.log(houses);
+			} else if (data_json.type == "score") {
+				ws.score = data_json.score;
 			} else {
 
 			}
