@@ -369,7 +369,7 @@ function spawn_fish (number_to_spawn) {
 		console.log(coords);
 		fishing_spots.unshift(coords);
 
-		if (fishing_spots.length >= 12) {
+		if (fishing_spots.length >= 16) {
 			fishing_spots.pop();
 		}
 	}

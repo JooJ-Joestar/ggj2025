@@ -24,11 +24,18 @@ draw_text(x, y, "Steve Agiota");
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text_transformed(0, 20, "Tempo: " + string(match_timer), 1.5, 1.5, 0);
-draw_text_transformed(0, 50, "Pontuacao: " + string(score), 1.5, 1.5, 0);
-draw_text_transformed(0, 80, "Peixe 1 x" + string(quantidade_one), 1.5, 1.5, 0);
-draw_text_transformed(0, 110, "Peixe 2 x" + string(quantidade_two), 1.5, 1.5, 0);
-draw_text_transformed(0, 140, "Peixe 3 x" + string(quantidade_three), 1.5, 1.5, 0);
+
+if (match_status == "run") {
+	draw_text_transformed(0, 20, "Tempo: " + string(match_timer), 1.5, 1.5, 0);
+	draw_text_transformed(0, 50, "Pontuacao: " + string(score), 1.5, 1.5, 0);
+	draw_text_transformed(0, 80, "Peixe 1 x" + string(quantidade_one), 1.5, 1.5, 0);
+	draw_text_transformed(0, 110, "Peixe 2 x" + string(quantidade_two), 1.5, 1.5, 0);
+	draw_text_transformed(0, 140, "Peixe 3 x" + string(quantidade_three), 1.5, 1.5, 0);
+} else if (match_status == "score") {
+	draw_text_transformed(0, 20, "Fim de partida. Tempo p/ proxima: " + string(match_timer), 1.5, 1.5, 0);
+	draw_text_transformed(0, 50, "Placar: ", 1.5, 1.5, 0);
+	draw_text_transformed(0, 80, scoreboard, 1.5, 1.5, 0);
+} 
 
 draw_set_halign(fa_left);
 draw_text(0, 0, global.txt_server_status);

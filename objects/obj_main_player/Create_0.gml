@@ -7,6 +7,8 @@ quantidade_two = 2;
 quantidade_three = 2;
 match_timer = 0;
 score = 0;
+match_status = "run";
+scoreboard = "";
 
 animationSpeed = 0;
 
