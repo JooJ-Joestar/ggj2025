@@ -11,19 +11,129 @@ const MATCH_TIME = 15;
 var timer = SCORE_TIME;
 var match_status = "pause";
 
+var fishes = [];
+
+var scoreboard = [];
+
+const sillyFirstNames = [
+	"Carlinhos",
+	"Dalva",
+	"Cleide",
+	"Steve Agiota",
+	"Bloop",
+	"Ziggy",
+	"Wobble",
+	"Snork",
+	"Flapjack",
+	"Muffin",
+	"Gizmo",
+	"Fizz",
+	"Booger",
+	"Doodle",
+	"Noodle",
+	"Squiggle",
+	"Tootsie",
+	"Waffle",
+	"Gloop",
+	"Fizzy",
+	"Bing",
+	"Pookie",
+	"Snuggle",
+	"Tater",
+	"Snazzy",
+	"Wiggly",
+	"Pickle",
+	"Scooter",
+	"Quirky",
+	"Fluffy",
+	"Mumbo",
+	"Jumbo",
+	"Wobblebottom",
+	"Froggy",
+	"Bubble",
+	"Splat",
+	"Chuckle",
+	"Giggles",
+	"Snickers",
+	"Peanut",
+	"Sprinkle",
+	"Banjo",
+	"Skippy",
+	"Dippy",
+	"Wiggles",
+	"Bouncy",
+	"Goofy",
+	"Zonky",
+	"Twinkle",
+	"Plop",
+	"Jiggly",
+	"Kooky",
+	"Squashy",
+	"Dorky",
+	"Floop",
+	"Twiddly",
+	"Gobbly",
+	"Snappy",
+	"Lolly",
+	"Bibbly",
+	"Zappy",
+	"Hiccup",
+	"Sneezy",
+	"Yapper",
+	"Flippy",
+	"Crumpet",
+	"Blubber",
+	"Scrappy",
+	"Grumbles",
+	"Quackers",
+	"Squirt",
+	"Puddles",
+	"Cuddles",
+	"Biffy",
+	"Zoodle",
+	"Fuzzle",
+	"Womble",
+	"Skedaddle",
+	"Wheezle",
+	"Zonk",
+	"Tumbles",
+	"Wompy",
+	"Yippee",
+	"Bimble",
+	"Sprocket",
+	"Snickersnap",
+	"Quibble",
+	"Zazzy",
+	"Frizzle",
+	"Hokey",
+	"Bonkers",
+	"Lumpy",
+	"Toodles",
+	"Gribble",
+	"Chortle",
+	"Dweezle",
+	"Fizzpop",
+	"Puffin",
+	"Moxie",
+	"Bibbity",
+	"Boopsie",
+	"Snorkel",
+	"Fuzzlewhack"
+];
+
 wss.on("connection", ws => {
 	if (match_status == "pause") {
 		match_status = "score";
 		timer = SCORE_TIME;
+		run_timer();
 	}
-	run_timer();
 
 	//code that should execute just after the player connects
 	console.log("Player joined. " + wss.clients.size + " players connected.");
-	ws.id = Math.round(Math.random() * 15000);
+	ws.id = sillyFirstNames[Math.round(Math.random() * sillyFirstNames.length)];
 	console.log(ws.id);
-	ws.x = 650.0;
-	ws.y = 650.0;
+	ws.x = 2178.0 + Math.random() * 60;
+	ws.y = 962.0 + Math.random() * 60;
 
 	var data = {
 		"type": "load_instances",
@@ -63,7 +173,7 @@ wss.on("connection", ws => {
 		try {
 			data = data.toString();
 			data = data.replace(/\0/g, '');
-			data = [data.slice(0, 1), "\"id\":" + ws.id + ",", data.slice(1)].join('');
+			data = [data.slice(0, 1), "\"id\":\"" + ws.id + "\",", data.slice(1)].join('');
 			data_json = JSON.parse((data));
 			// console.log(data_json);
 			if (data_json.type == "keep_alive") {
@@ -106,6 +216,11 @@ wss.on("connection", ws => {
 			// 		network_id: data_json.network_id
 			// 	});
 			// 	console.log(houses);
+			} else if (data_json.type == "score") {
+				scoreboard[ws.id] = data_json.score;
+				scoreboard.sort(function(a, b){return a - b});
+				console.log(scoreboard);
+				return;
 			} else {
 
 			}
@@ -137,6 +252,8 @@ wss.on("connection", ws => {
 		wss.clients.forEach(function each(client) {
 			client.send("{\"type\":\"disconnect\",\"id\":" + ws.id + "}", { binary: false });
 		});
+		console.log(scoreboard);
+		scoreboard.splice(ws.id, 1);
 	})
 
 	// handling client connection error
@@ -165,14 +282,33 @@ function run_timer () {
 
 	if (match_status == "pause") return;
 
+	if (match_status == "score") {
+		var fmt_score = ``;
+		for (let i in scoreboard) {
+			fmt_score += i + `: ` + scoreboard[i] + `\n`;
+		}
+
+		var final_score = {
+			arr_score: scoreboard,
+			fmt_score: fmt_score
+		};
+	}
+
 	if (timer > 0) {
 		timer--;
 		try {
-			data = JSON.stringify({
+			data = {
 				"type": "timer",
 				"timer": timer,
 				"match_status": match_status
-			});
+			};
+
+			if (match_status == "score") {
+				data.final_score = final_score;
+				console.log(data);
+			}
+
+			data = JSON.stringify(data);
 			wss.clients.forEach(function each(client) {
 				client.send()
 				client.send(data, { binary: false });
@@ -195,6 +331,8 @@ function run_timer () {
 	} else if (match_status == "score") {
 		match_status = "run";
 		timer = MATCH_TIME;
+
+		scoreboard = [];
 	}
 	run_timer();
 }
