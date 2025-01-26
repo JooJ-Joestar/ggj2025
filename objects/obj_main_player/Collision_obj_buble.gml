@@ -3,6 +3,10 @@
 
 if (other.id == active_bomb.id) exit;
 
+if (move_speed > 0) {
+	audio_play_sound(snd_bonk, 10, false);
+}
+
 if (time_source_fucked) {
 	time_source_destroy(time_source_fucked);
 }
