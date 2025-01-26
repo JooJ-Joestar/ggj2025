@@ -5,8 +5,8 @@ const WebSocketServer = require('ws');
 // Creating a new websocket server
 const wss = new WebSocketServer.Server({ port: 3001 })
 
-const SCORE_TIME = 15;
-const MATCH_TIME = 15;
+const SCORE_TIME = 10;
+const MATCH_TIME = 90;
 
 var timer = SCORE_TIME;
 var match_status = "pause";
@@ -142,7 +142,7 @@ const silly_first_names = [
 
 wss.on("connection", ws => {
 	if (match_status == "pause") {
-		match_status = "score";
+		match_status = "run";
 		timer = SCORE_TIME;
 		run_timer();
 	}
