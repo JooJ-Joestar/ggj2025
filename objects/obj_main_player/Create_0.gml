@@ -5,6 +5,7 @@
 quantidade_one = 99;
 quantidade_two = 99;
 quantidade_three = 99;
+score = 0;
 animationSpeed = 0;
 
 shooting = false;
@@ -37,6 +38,7 @@ move_speed = original_move_speed;
 has_wood = false;
 time_source_fucked = false;
 fucked_timeout = 1;
+match_timer = 0;
 
 joystick_moved = false;
 

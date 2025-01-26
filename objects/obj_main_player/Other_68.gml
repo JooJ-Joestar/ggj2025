@@ -86,6 +86,11 @@ if (async_load[? "size"] > 0) {
 				player.place_bomb();
 			break;
 			
+			case "timer":
+				match_timer = response_struct.timer;
+				
+			break;
+			
 		//	case "cut_tree":
 		//		for (var i = 0; i < instance_number(obj_tree); ++i;) {
 		//			tree = instance_find(obj_tree, i);
