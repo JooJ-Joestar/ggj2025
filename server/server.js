@@ -22,8 +22,8 @@ wss.on("connection", ws => {
 	console.log("Player joined. " + wss.clients.size + " players connected.");
 	ws.id = Math.round(Math.random() * 15000);
 	console.log(ws.id);
-	ws.x = 650.0;
-	ws.y = 650.0;
+	ws.x = 2178.0 + Math.random() * 60;
+	ws.y = 962.0 + Math.random() * 60;
 
 	var data = {
 		"type": "load_instances",
