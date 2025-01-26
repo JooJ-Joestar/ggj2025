@@ -4,7 +4,7 @@
 if (!is_main_player) exit;
 var has_moved = false;
 
-show_debug_message(joystick_moved);
+//show_debug_message(joystick_moved);
 
 function animationsProgression(){
 animationSpeed = 1;
