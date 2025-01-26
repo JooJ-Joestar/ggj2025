@@ -79,8 +79,8 @@ function desativarMinigamePesca()
 	view_set_visible(0, true);
 	view_set_visible(1, false);
 	
+	global.minigamePesca = false;
 	camera_set_view_target(view_camera[0], global.main_player)
 	
 	chamada_uma_vez= true;
-	global.minigamePesca = false;
 }

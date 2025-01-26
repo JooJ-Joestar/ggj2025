@@ -54,6 +54,7 @@
     {"id":{"name":"Button","path":"objects/Button/Button.yy",},},
     {"id":{"name":"Cozinha","path":"objects/Cozinha/Cozinha.yy",},},
     {"id":{"name":"invisibleHitbox","path":"objects/invisibleHitbox/invisibleHitbox.yy",},},
+    {"id":{"name":"logo","path":"objects/logo/logo.yy",},},
     {"id":{"name":"obj_buble","path":"objects/obj_buble/obj_buble.yy",},},
     {"id":{"name":"obj_button_controls","path":"objects/obj_button_controls/obj_button_controls.yy",},},
     {"id":{"name":"obj_button_help","path":"objects/obj_button_help/obj_button_help.yy",},},
@@ -153,8 +154,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"map","path":"rooms/map/map.yy",},},
     {"roomId":{"name":"map_menu","path":"rooms/map_menu/map_menu.yy",},},
+    {"roomId":{"name":"map","path":"rooms/map/map.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

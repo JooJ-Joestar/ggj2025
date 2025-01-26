@@ -25,9 +25,10 @@ else{	/// @DnDAction : YoYo Games.Instances.Create_Instance
 	/// @DnDApplyTo : {obj_button_parent}
 	/// @DnDParent : 5B27E700
 	/// @DnDArgument : "xpos" "room_width / 2"
-	/// @DnDArgument : "ypos" "room_height  -100"
+	/// @DnDArgument : "ypos" "room_height  -150"
 	/// @DnDArgument : "objectid" "obj_button_controls"
+	/// @DnDArgument : "layer" ""tutorial""
 	/// @DnDSaveInfo : "objectid" "obj_button_controls"
 	with(obj_button_parent) {
-		instance_create_layer(room_width / 2, room_height  -100, "Instances", obj_button_controls); 
+		instance_create_layer(room_width / 2, room_height  -150, "tutorial", obj_button_controls); 
 	}}

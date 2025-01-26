@@ -30,6 +30,7 @@
     {"name":"Botao_3_OBJ","order":4,"path":"objects/Botao_3_OBJ/Botao_3_OBJ.yy",},
     {"name":"Cozinha","order":16,"path":"objects/Cozinha/Cozinha.yy",},
     {"name":"invisibleHitbox","order":19,"path":"objects/invisibleHitbox/invisibleHitbox.yy",},
+    {"name":"logo","order":22,"path":"objects/logo/logo.yy",},
     {"name":"obj_buble","order":6,"path":"objects/obj_buble/obj_buble.yy",},
     {"name":"obj_carlinhos","order":20,"path":"objects/obj_carlinhos/obj_carlinhos.yy",},
     {"name":"obj_enemy","order":1,"path":"objects/obj_enemy/obj_enemy.yy",},

@@ -1,12 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"TestePescaOBJ",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_main_player","path":"objects/obj_main_player/obj_main_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"logo",
+  "eventList":[],
   "managed":true,
-  "name":"TestePescaOBJ",
+  "name":"logo",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"taaquiobixo",
-    "path":"sprites/taaquiobixo/taaquiobixo.yy",
+    "name":"Logo_Splashimi",
+    "path":"sprites/Logo_Splashimi/Logo_Splashimi.yy",
   },
   "spriteMaskId":null,
   "visible":true,
