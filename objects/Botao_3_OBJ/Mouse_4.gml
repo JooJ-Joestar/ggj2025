@@ -1,0 +1,1 @@
+SUSHI_FUNDO_OBJ.selected = 2;
