@@ -15,7 +15,26 @@ var fishes = [];
 
 var scoreboard = [];
 
-const sillyFirstNames = [
+const fish_coords = [
+	{x: 256, y: 896},
+	{x: 928, y: 448},
+	{x: 1632, y: 288},
+	{x: 2368, y: 96},
+	{x: 3168, y: 128},
+	{x: 3712, y: 352},
+	{x: 4288, y: 608},
+	{x: 4640, y: 800},
+	{x: 4640, y: 1120},
+	{x: 3904, y: 1376},
+	{x: 3424, y: 1664},
+	{x: 2464, y: 1920},
+	{x: 1792, y: 1888},
+	{x: 1120, y: 1696},
+	{x: 576, y: 1472},
+	{x: 192, y: 1280},
+];
+
+const silly_first_names = [
 	"Carlinhos",
 	"Dalva",
 	"Cleide",
@@ -160,13 +179,12 @@ wss.on("connection", ws => {
 
 	try {
 		wss.clients.forEach(function each(client) {
-			if (client !== ws && client.readyState === WebSocket.OPEN) {
+			if (client !== ws && client.readyState === WebSocketServer.OPEN) {
 				client.send(data, { binary: false });
 			}
 		});
 	} catch (error) {
 		console.log(error);
-		console.log(client);
 	}
 
 	//when the client sends us a message
@@ -227,7 +245,7 @@ wss.on("connection", ws => {
 			}
 
 			wss.clients.forEach(function each(client) {
-				if (client !== ws && client.readyState === WebSocket.OPEN) {
+				if (client !== ws && client.readyState === WebSocketServer.OPEN) {
 					client.send(data, { binary: false });
 				}
 			});
@@ -336,4 +354,8 @@ function run_timer () {
 		scoreboard = [];
 	}
 	run_timer();
+}
+
+function spawn_fish () {
+
 }
