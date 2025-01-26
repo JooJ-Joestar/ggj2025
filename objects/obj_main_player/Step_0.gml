@@ -109,6 +109,23 @@ if (keyboard_check(vk_up) || joystick_moved) {
 	
 }
 
+if (
+	place_meeting(hsp + x, y, invisibleHitbox)
+	|| place_meeting(hsp + x, y, obj_carlinhos)
+	|| place_meeting(hsp + x, y, obj_grupo)
+) {
+	show_debug_message("Collider");
+	hsp = 0;
+}
+
+if (place_meeting(x, vsp + y, invisibleHitbox)
+	|| place_meeting(x, vsp + y, obj_carlinhos)
+	|| place_meeting(x, vsp + y, obj_grupo)
+) {
+	show_debug_message("Collider");
+	vsp = 0;
+}
+
 x += hsp;
 y += vsp;
 
@@ -116,10 +133,6 @@ if(hsp == 0 && vsp ==0)
 {
 	animationResset();
 }
-
-/*if (place_meeting(x, y, obj_enemy)) {
-	game_restart();
-}*/
 
 if (is_main_player && has_moved ) {
 	send_network_data(json_stringify({type: "move", x: x, y: y}));

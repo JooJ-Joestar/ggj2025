@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"invisibleHitbox",
+  "%Name":"obj_grupo",
   "eventList":[],
   "managed":true,
-  "name":"invisibleHitbox",
+  "name":"obj_grupo",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,14 +26,11 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
+  "solid":false,
   "spriteId":{
-    "name":"spr_collider",
-    "path":"sprites/spr_collider/spr_collider.yy",
+    "name":"Sprite53",
+    "path":"sprites/Sprite53/Sprite53.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_collider",
-    "path":"sprites/spr_collider/spr_collider.yy",
-  },
-  "visible":false,
+  "spriteMaskId":null,
+  "visible":true,
 }
