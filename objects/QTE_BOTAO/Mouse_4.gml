@@ -1,0 +1,2 @@
+QTE_FUNDO.resolverQTEPesca();
+

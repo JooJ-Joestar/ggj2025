@@ -4,6 +4,7 @@
 if (!is_main_player) exit;
 var has_moved = false;
 
+show_debug_message(joystick_moved);
 
 function animationsProgression(){
 animationTimer +=1;
@@ -17,6 +18,10 @@ function animationResset(){
 	if (animationTimer >= 5) {
 		if (image_index == 0) {
 		        image_index = 1;
+		    } else if (image_index == 1) {
+		        image_index = 2;
+		    } else if (image_index == 2) {
+		        image_index = 3;
 		    } else {
 		        image_index = 0;
 	    }
@@ -38,31 +43,46 @@ animations = {
 }
 
 
-if (keyboard_check(vk_right)) {
-	hsp = move_speed;
-	image_xscale = 2;
+if (keyboard_check(vk_right) || joystick_moved) {
+	if(!joystick_moved)
+	{
+		hsp = move_speed;
+	}
+	image_xscale = 0.5;
 	animationsProgression();
 	
 	has_moved = true;
-} else if (keyboard_check(vk_left)) {
-	hsp = -move_speed;
-	image_xscale = -2;
+} else if (keyboard_check(vk_left) || joystick_moved) {
+	if(!joystick_moved)
+	{
+		hsp = -move_speed;
+	}
+	
+	image_xscale = -0.5;
 	has_moved = true;
 	
 	animationsProgression();
-} else {
-	hsp = 0;	
+} else if (!joystick_moved){
+	hsp = 0;
 }
 
-if (keyboard_check(vk_up)) {
-	vsp = -move_speed;
+if (keyboard_check(vk_up) || joystick_moved) {
+	if(!joystick_moved)
+	{
+		vsp = -move_speed;
+	}
+	
 	has_moved = true;
 	animationsProgression();
-} else if (keyboard_check(vk_down)) {
-	vsp = +move_speed;
+} else if (keyboard_check(vk_down) || joystick_moved) {
+	if(!joystick_moved)
+	{
+		vsp = +move_speed;
+	}
+	
 	has_moved = true;
 	animationsProgression();
-} else {
+} else if (!joystick_moved) {
 	vsp = 0;
 	
 }
@@ -87,4 +107,16 @@ if (is_main_player && has_moved ) {
 
 has_moved = false;
 
+if(global.minigamePesca)
+{
+	//instance_deactivate_object(minigamePesca);
+	layer_set_visible("MinigamePESCA", true);
+	view_set_visible(1, true);
+}
 
+if(global.minigameSushi)
+{
+	//instance_deactivate_object(minigamePesca);
+	layer_set_visible("MinigameSUSHI", true);
+	view_set_visible(2, true);
+}
