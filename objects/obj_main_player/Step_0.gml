@@ -18,6 +18,10 @@ function animationResset(){
 	if (animationTimer >= 5) {
 		if (image_index == 0) {
 		        image_index = 1;
+		    } else if (image_index == 1) {
+		        image_index = 2;
+		    } else if (image_index == 2) {
+		        image_index = 3;
 		    } else {
 		        image_index = 0;
 	    }
@@ -44,7 +48,7 @@ if (keyboard_check(vk_right) || joystick_moved) {
 	{
 		hsp = move_speed;
 	}
-	image_xscale = 2;
+	image_xscale = 0.5;
 	animationsProgression();
 	
 	has_moved = true;
@@ -54,7 +58,7 @@ if (keyboard_check(vk_right) || joystick_moved) {
 		hsp = -move_speed;
 	}
 	
-	image_xscale = -2;
+	image_xscale = -0.5;
 	has_moved = true;
 	
 	animationsProgression();

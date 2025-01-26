@@ -41,17 +41,17 @@ if (async_load[? "size"] > 0) {
 					);
 				});
 				
-				array_foreach (response_struct.trees, function (_element, _index) {
-					show_debug_message(_element);
-					tree = instance_create_layer(
-						_element.x,
-						_element.y,
-						"Instances",
-						obj_tree
-					);
-					variable_instance_set(tree, "network_id", _element.network_id);
-					show_debug_message(variable_instance_get(tree, "network_id"));
-				});
+				//array_foreach (response_struct.trees, function (_element, _index) {
+				//	show_debug_message(_element);
+			//		tree = instance_create_layer(
+			//			_element.x,
+			//			_element.y,
+			//			"Instances",
+			//			obj_tree
+			//		);
+			//		variable_instance_set(tree, "network_id", _element.network_id);
+			//		show_debug_message(variable_instance_get(tree, "network_id"));
+			//	});
 			break;
 			
 			case "new_player":
@@ -68,28 +68,28 @@ if (async_load[? "size"] > 0) {
 				move(response_struct.id, response_struct.x, response_struct.y);
 			break;
 			
-			case "cutting_tree":
-				var tree = false;
-				for (var i = 0; i < instance_number(obj_tree); ++i;) {
-					tree = instance_find(obj_tree, i);
-					if (tree.network_id == response_struct.tree_network_id) break;
-					tree = false;
-				}
-				if (!tree) break;
-				player = player_list[response_struct.id];
-				player.tree_near = tree.id;
-				player.cut_tree();
-			break;
+			//case "cutting_tree":
+			//	var tree = false;
+			//	for (var i = 0; i < instance_number(obj_tree); ++i;) {
+			//		tree = instance_find(obj_tree, i);
+			//		if (tree.network_id == response_struct.tree_network_id) break;
+			//		tree = false;
+			//	}
+			//	if (!tree) break;
+			//	player = player_list[response_struct.id];
+			//	player.tree_near = tree.id;
+			//	player.cut_tree();
+			//break;
 			
-			case "cut_tree":
-				for (var i = 0; i < instance_number(obj_tree); ++i;) {
-					tree = instance_find(obj_tree, i);
-					if (tree.network_id == response_struct.tree_network_id) break;
-					tree = false;
-				}
-				if (!tree) break;
-				instance_destroy(tree);
-			break;
+		//	case "cut_tree":
+		//		for (var i = 0; i < instance_number(obj_tree); ++i;) {
+		//			tree = instance_find(obj_tree, i);
+		//			if (tree.network_id == response_struct.tree_network_id) break;
+		//			tree = false;
+		//		}
+		//		if (!tree) break;
+		//		instance_destroy(tree);
+		//	break;
 			
 			case "disconnect":
 				instance_destroy(player_list[response_struct.id]);

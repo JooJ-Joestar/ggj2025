@@ -9,8 +9,8 @@ global.minigamePesca = false;
 
 image_speed = 0;
 image_index = 0;
-image_xscale = 2;
-image_yscale = 2;
+image_xscale = 0.5;
+image_yscale = 0.5;
 
 animationTimer =0;
 
@@ -30,10 +30,6 @@ time_source_fucked = false;
 fucked_timeout = 1;
 
 joystick_moved = false;
-tree_near = false;
-cutting_tree = false;
-cutting_tree_duration = 1;
-time_source_tree = false;
 
 placing_house = false;
 placing_house_duration = 1;
@@ -58,38 +54,6 @@ function send_network_data (json_data) {
 	network_send_raw(client, player_buffer, 200, 1);
 }
 
-function cut_tree () {
-	var restore_speed = function restore_speed (new_speed) {
-		move_speed = new_speed;
-		cutting_tree = false;
-		has_wood = true;
-		data = json_stringify({
-			type: "cut_tree",
-			player: id,
-			tree: tree_near.id,
-			network_id: variable_instance_get(tree_near, "network_id"),
-			x: x,
-			y: y
-		});
-		show_debug_message(data);
-		send_network_data(data);
-		if (!is_main_player) return;
-		instance_destroy(tree_near);
-		tree_near = false;
-	}
-
-	move_speed = 0;
-	time_source_tree = time_source_create(time_source_game, cutting_tree_duration, time_source_units_seconds, restore_speed, [original_move_speed]);
-	time_source_start(time_source_tree);
-	cutting_tree = true;
-	
-	send_network_data(json_stringify({
-		type: "cutting_tree",
-		network_id: variable_instance_get(tree_near, "network_id"),
-		x: x,
-		y: y
-	}));
-}
 
 function create_house () {
 	var restore_speed = function restore_speed (new_speed) {
@@ -158,7 +122,7 @@ function place_bomb () {
 		x + sprite_width / 2 - sprite_get_width(spr_bomb) / 2,
 		y + sprite_height / 2 - sprite_get_height(spr_bomb) / 2,
 		"Instances",
-		obj_bomb,
+		obj_buble,
 		{network_id: md5_string_unicode(get_timer() + irandom_range(1, 999999))}
 	);
 	

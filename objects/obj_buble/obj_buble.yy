@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bomb",
+  "%Name":"obj_buble",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bomb",
+  "name":"obj_buble",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bomb",
-    "path":"sprites/spr_bomb/spr_bomb.yy",
+    "name":"Sprite34",
+    "path":"sprites/Sprite34/Sprite34.yy",
   },
   "spriteMaskId":null,
   "visible":true,
