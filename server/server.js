@@ -238,7 +238,7 @@ wss.on("connection", ws => {
 			} else if (data_json.type == "score") {
 				scoreboard[ws.id] = data_json.score;
 				scoreboard.sort(function(a, b){return a - b});
-				console.log(scoreboard);
+				// console.log(scoreboard);
 				return;
 			} else {
 
@@ -296,8 +296,8 @@ function makeid(length) {
 }
 
 function run_timer () {
-	console.log(timer);
-	console.log(match_status);
+	// console.log(timer);
+	// console.log(match_status);
 
 	if (match_status == "pause") return;
 
@@ -324,7 +324,7 @@ function run_timer () {
 
 			if (match_status == "score") {
 				data.final_score = final_score;
-				console.log(data);
+				// console.log(data);
 			}
 
 			data = JSON.stringify(data);
