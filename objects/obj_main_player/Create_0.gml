@@ -144,3 +144,10 @@ function place_bomb () {
 		y: y
 	}));
 }
+
+function add_to_score (amt_to_add) {
+	score = score + amt_to_add;
+	send_network_data(json_stringify({
+		type: "score"
+	}));
+}
