@@ -125,7 +125,7 @@ wss.on("connection", ws => {
 	if (match_status == "pause") {
 		match_status = "score";
 		timer = SCORE_TIME;
-	run_timer();
+		run_timer();
 	}
 
 	//code that should execute just after the player connects
@@ -283,10 +283,10 @@ function run_timer () {
 	if (match_status == "pause") return;
 
 	if (match_status == "score") {
-		var fmt_score = "";
-		scoreboard.forEach(function (item, key) {
-			fmt_score += key + ": " + item + "\n";
-		});
+		var fmt_score = ``;
+		for (let i in scoreboard) {
+			fmt_score += i + `: ` + scoreboard[i] + `\n`;
+		}
 
 		var final_score = {
 			arr_score: scoreboard,
@@ -305,6 +305,7 @@ function run_timer () {
 
 			if (match_status == "score") {
 				data.final_score = final_score;
+				console.log(data);
 			}
 
 			data = JSON.stringify(data);
