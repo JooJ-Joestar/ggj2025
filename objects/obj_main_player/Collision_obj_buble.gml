@@ -21,3 +21,4 @@ image_index = 3
 
 time_source_fucked = time_source_create(time_source_game, fucked_timeout, time_source_units_seconds, revive);
 time_source_start(time_source_fucked);
+instance_destroy(other);
