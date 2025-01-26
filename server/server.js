@@ -11,6 +11,10 @@ const MATCH_TIME = 15;
 var timer = SCORE_TIME;
 var match_status = "pause";
 
+var fishes = [];
+
+var scoreboard = [];
+
 wss.on("connection", ws => {
 	if (match_status == "pause") {
 		match_status = "score";
@@ -21,7 +25,6 @@ wss.on("connection", ws => {
 	//code that should execute just after the player connects
 	console.log("Player joined. " + wss.clients.size + " players connected.");
 	ws.id = Math.round(Math.random() * 15000);
-	ws.score = 0;
 	console.log(ws.id);
 	ws.x = 2178.0 + Math.random() * 60;
 	ws.y = 962.0 + Math.random() * 60;
@@ -108,7 +111,10 @@ wss.on("connection", ws => {
 			// 	});
 			// 	console.log(houses);
 			} else if (data_json.type == "score") {
-				ws.score = data_json.score;
+				scoreboard[ws.id] = data_json.score;
+				scoreboard.sort(function(a, b){return a - b});
+				console.log(scoreboard);
+				return;
 			} else {
 
 			}
@@ -140,6 +146,8 @@ wss.on("connection", ws => {
 		wss.clients.forEach(function each(client) {
 			client.send("{\"type\":\"disconnect\",\"id\":" + ws.id + "}", { binary: false });
 		});
+		console.log(scoreboard);
+		scoreboard.splice(ws.id, 1);
 	})
 
 	// handling client connection error
@@ -168,14 +176,32 @@ function run_timer () {
 
 	if (match_status == "pause") return;
 
+	if (match_status == "score") {
+		var fmt_score = "";
+		scoreboard.forEach(function (item, key) {
+			fmt_score += key + ": " + item + "\n";
+		});
+
+		var final_score = {
+			arr_score: scoreboard,
+			fmt_score: fmt_score
+		};
+	}
+
 	if (timer > 0) {
 		timer--;
 		try {
-			data = JSON.stringify({
+			data = {
 				"type": "timer",
 				"timer": timer,
 				"match_status": match_status
-			});
+			};
+
+			if (match_status == "score") {
+				data.final_score = final_score;
+			}
+
+			data = JSON.stringify(data);
 			wss.clients.forEach(function each(client) {
 				client.send()
 				client.send(data, { binary: false });
@@ -198,6 +224,8 @@ function run_timer () {
 	} else if (match_status == "score") {
 		match_status = "run";
 		timer = MATCH_TIME;
+
+		scoreboard = [];
 	}
 	run_timer();
 }
