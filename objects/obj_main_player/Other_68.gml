@@ -93,7 +93,7 @@ if (async_load[? "size"] > 0) {
 				
 					if (match_status = "score") {
 						score = 0;
-						scoreboard = response_struct.fmt_score;
+						scoreboard = response_struct.final_score.fmt_score;
 					}
 				break;
 			
