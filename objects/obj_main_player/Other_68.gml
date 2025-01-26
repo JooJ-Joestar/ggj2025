@@ -64,6 +64,19 @@ if (async_load[? "size"] > 0) {
 				);
 			break;
 			
+			case "fishing_spots":
+				instance_destroy(TestePescaOBJ);
+				
+				array_foreach(response_struct.fishing_spots, function (_element, _index) {
+					instance_create_layer(
+						_element.x,
+						_element.y,
+						"Instances",
+						TestePescaOBJ
+					);
+				});
+			break;
+			
 			case "move":
 				move(response_struct.id, response_struct.x, response_struct.y);
 			break;
