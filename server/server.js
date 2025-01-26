@@ -5,16 +5,19 @@ const WebSocketServer = require('ws');
 // Creating a new websocket server
 const wss = new WebSocketServer.Server({ port: 3001 })
 
-trees = [
-	{network_id: "fgsfds12", x: 512, y: 352},
-	{network_id: "fgsfds13", x: 736, y: 224},
-	{network_id: "fgsfds14", x: 864, y: 352},
-];
-bombs = [];
-houses = [];
+const SCORE_TIME = 15;
+const MATCH_TIME = 15;
 
-console.log(trees);
+var timer = SCORE_TIME;
+var match_status = "pause";
+
 wss.on("connection", ws => {
+	if (match_status == "pause") {
+		match_status = "score";
+		timer = SCORE_TIME;
+	}
+	run_timer();
+
 	//code that should execute just after the player connects
 	console.log("Player joined. " + wss.clients.size + " players connected.");
 	ws.id = Math.round(Math.random() * 15000);
@@ -25,8 +28,6 @@ wss.on("connection", ws => {
 	var data = {
 		"type": "load_instances",
 		"players": [],
-		"trees": trees,
-		"houses": houses,
 		"own_id": ws.id
 	};
 
@@ -68,43 +69,45 @@ wss.on("connection", ws => {
 			if (data_json.type == "keep_alive") {
 				ws.send(JSON.stringify({"type": "keep_alive"}), {binary: false});
 				return;
-			} else if (data_json.type == "cutting_tree") {
-				console.log("cutting_tree");
-				// Nothing to do for now
-			} else if (data_json.type == "cut_tree") {
-				console.log(data_json.network_id);
-				var tree_found = false;
-				trees.forEach(function (item, key) {
-					if (item.network_id != data_json.network_id) return;
-					trees.splice(key, 1);
-				});
-				if (!tree_found) {
-					console.log("Tree not found");
-					return false;
-				}
-			} else if (data_json.type == "place_bomb") {
-				bombs.unshift({
-					owner: ws.id,
-					network_id: data_json.network_id
-				});
-			} else if (data_json.type == "detonate_bomb") {
-				console.log(data_json.network_id);
-				var bomb_found = false;
-				bombs.forEach(function (item, key) {
-					if (item.network_id != data_json.network_id) return;
-					bombs.splice(key, 1);
-				});
-				if (!bomb_found) {
-					console.log("Tree not found");
-					return false;
-				}
-			}  else if (data_json.type == "create_house") {
-				console.log(data_json);
-				houses.unshift({
-					owner: ws.id,
-					network_id: data_json.network_id
-				});
-				console.log(houses);
+			// } else if (data_json.type == "cutting_tree") {
+			// 	console.log("cutting_tree");
+			// 	// Nothing to do for now
+			// } else if (data_json.type == "cut_tree") {
+			// 	console.log(data_json.network_id);
+			// 	var tree_found = false;
+			// 	trees.forEach(function (item, key) {
+			// 		if (item.network_id != data_json.network_id) return;
+			// 		trees.splice(key, 1);
+			// 	});
+			// 	if (!tree_found) {
+			// 		console.log("Tree not found");
+			// 		return false;
+			// 	}
+			// } else if (data_json.type == "place_bomb") {
+			// 	bombs.unshift({
+			// 		owner: ws.id,
+			// 		network_id: data_json.network_id
+			// 	});
+			// } else if (data_json.type == "detonate_bomb") {
+			// 	console.log(data_json.network_id);
+			// 	var bomb_found = false;
+			// 	bombs.forEach(function (item, key) {
+			// 		if (item.network_id != data_json.network_id) return;
+			// 		bombs.splice(key, 1);
+			// 	});
+			// 	if (!bomb_found) {
+			// 		console.log("Tree not found");
+			// 		return false;
+			// 	}
+			// }  else if (data_json.type == "create_house") {
+			// 	console.log(data_json);
+			// 	houses.unshift({
+			// 		owner: ws.id,
+			// 		network_id: data_json.network_id
+			// 	});
+			// 	console.log(houses);
+			} else {
+
 			}
 
 			wss.clients.forEach(function each(client) {
@@ -127,6 +130,9 @@ wss.on("connection", ws => {
 
 	// handling what to do when clients disconnects from server
 	ws.on("close", () => {
+		if (wss.clients.size == 0) {
+			match_status = "pause";
+		}
 		console.log("Player left. " + wss.clients.size + " players left.");
 		wss.clients.forEach(function each(client) {
 			client.send("{\"type\":\"disconnect\",\"id\":" + ws.id + "}", { binary: false });
@@ -151,4 +157,44 @@ function makeid(length) {
       counter += 1;
     }
     return result;
+}
+
+function run_timer () {
+	console.log(timer);
+	console.log(match_status);
+
+	if (match_status == "pause") return;
+
+	if (timer > 0) {
+		timer--;
+		try {
+			data = JSON.stringify({
+				"type": "timer",
+				"timer": timer,
+				"match_status": match_status
+			});
+			wss.clients.forEach(function each(client) {
+				client.send()
+				client.send(data, { binary: false });
+			});
+		} catch (error) {
+			console.log(error);
+			console.log(client);
+		}
+
+		setTimeout(function () {
+			run_timer();
+		}, 1000);
+
+		return;
+	}
+
+	if (match_status == "run") {
+		match_status = "score";
+		timer = SCORE_TIME;
+	} else if (match_status == "score") {
+		match_status = "run";
+		timer = MATCH_TIME;
+	}
+	run_timer();
 }
