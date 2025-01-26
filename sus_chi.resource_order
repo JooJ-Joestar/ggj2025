@@ -50,6 +50,7 @@
     {"name":"Topo","order":6,"path":"objects/Topo/Topo.yy",},
     {"name":"Vazio","order":1,"path":"objects/Vazio/Vazio.yy",},
     {"name":"CORRECT","order":1,"path":"sounds/CORRECT/CORRECT.yy",},
+    {"name":"snd_bonk","order":2,"path":"sounds/snd_bonk/snd_bonk.yy",},
     {"name":"_1","order":1,"path":"sprites/_1/_1.yy",},
     {"name":"_2","order":2,"path":"sprites/_2/_2.yy",},
     {"name":"_3","order":3,"path":"sprites/_3/_3.yy",},
