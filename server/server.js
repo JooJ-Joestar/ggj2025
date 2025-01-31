@@ -358,6 +358,20 @@ function run_timer () {
 	run_timer();
 }
 
+function format_scoreboard () {
+	scoreboard_formatted = "";
+
+	// Convert to an array of key-value pairs, sort it, then convert it back
+	var ordered_score = Object.entries(scoreboard)
+		.sort((a, b) => b[1] - a[1]); // Sort by score (value), descending
+
+	var place = 1;
+	for (let i in ordered_score) {
+		scoreboard_formatted += place + ") " + i + `: ` + scoreboard[i] + `\n`;
+		place++;
+	}
+}
+
 function spawn_fish (number_to_spawn) {
 	try {
 		if (number_to_spawn == 0) return;
